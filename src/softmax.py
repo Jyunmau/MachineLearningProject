@@ -91,9 +91,8 @@ class SoftmaxRegression:
         :param y_batch: 分类真实值，one_hot，dim1是样本，dim2是类别
         :return:
         """
-        scores = np.dot(x_batch, self.theta.T)
-        # print(scores)
-        loss = - (1 / self.sample_num) * np.sum(y_batch * np.log(scores))
+        p_c = self.softmax(x_batch)
+        loss = - (1 / self.sample_num) * np.sum(y_batch * np.log(p_c))
         return loss
 
     def gradient(self, x_batch, y_batch, h_j):
