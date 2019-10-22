@@ -29,7 +29,7 @@ class LogisticRegression:
         self.theta = None
         self.loss_list = []
 
-    def train(self, x_train, y_train):
+    def train(self, x_train, y_train, y, is_SGD=False):
         """
         用mini-batch的GD训练并计算loss
         :param x_train: 特征数据，dim1是样本，dim2是特征
@@ -37,10 +37,14 @@ class LogisticRegression:
         :return:
         """
         self.sample_num, self.feature_num = x_train.shape
-        self.sample_num, self.category_num = y_train.shape
-        self.theta = np.random.rand(self.category_num, self.feature_num)
-        batches = self.get_batches(x_train, y_train)
+        # self.sample_num, self.category_num = y_train.shape
+        self.category_num = 1
+        # self.theta = np.random.rand(self.category_num, self.feature_num)
+        self.theta = np.zeros((self.category_num, self.feature_num))
+        print(self.theta.shape)
+        batches = self.get_batches(x_train, y_train, is_SGD)
         for i in range(self.max_iter):
+            # batches = self.get_batches(x_train, y_train, True)
             for batch in batches:
                 x_batch = batch[0]
                 y_batch = batch[1]
@@ -52,22 +56,31 @@ class LogisticRegression:
             self.loss_list.append(loss)
         pd = dp.PlotData()
         pd.plot_loss(self.loss_list)
+        pd.plot_result(x_train, y, self.theta)
 
-    def get_batches(self, x_train, y_train):
+    def get_batches(self, x_train, y_train, is_shuffle=False):
         """
         将数据划分成batch
         :param x_train: 特征数据，dim1是样本，dim2是特征
         :param y_train: 分类真实值，one_hot，dim1是样本，dim2是类别
+        :param is_shuffle: 是否要打乱特征数据，即是否使用SGD
         :return: batches，元组list，0是特征数据，1是分类真实值
         """
         batches = []
+        print(x_train.shape)
+        print(y_train.shape)
+        temp = np.concatenate((x_train, y_train),axis=1)
+        if is_shuffle:
+            np.random.shuffle(temp)
+        temp_x = temp[..., :x_train.shape[1]]
+        temp_y = temp[..., x_train.shape[1]:]
         for i in range(np.int(self.sample_num / self.batch_size)):
             x_batch = []
             y_batch = []
             for j in range(self.batch_size):
                 # print(i * self.batch_size + j)
-                x_batch.append(x_train[i * self.batch_size + j])
-                y_batch.append(y_train[i * self.batch_size + j])
+                x_batch.append(temp_x[i * self.batch_size + j])
+                y_batch.append(temp_y[i * self.batch_size + j])
             batch = (np.array(x_batch), np.array(y_batch))
             batches.append(batch)
         return batches
@@ -91,7 +104,7 @@ class LogisticRegression:
         :return:
         """
         p_c = self.logistic(x_batch)
-        loss = 1 + (1 / self.sample_num) * np.sum(y_batch * np.log(p_c))
+        loss = - (1 / self.sample_num) * np.sum(y_batch * np.log(p_c))
         # loss = - np.sum(y_batch * np.log(p_c))
         return loss
 

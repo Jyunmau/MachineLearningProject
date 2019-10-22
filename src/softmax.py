@@ -5,7 +5,7 @@ import numpy as np
 # _*_ coding:utf-8 _*_
 
 #   @Version : 0.1.5
-#   @Time    : 2019/10/22 15:37
+#   @Time    : 2019/10/22 22:37
 #   @Author  : Jyunmau Chan
 #   @File    : softmax.py
 
@@ -29,7 +29,7 @@ class SoftmaxRegression:
         self.theta = None
         self.loss_list = []
 
-    def train(self, x_train, y_train, y):
+    def train(self, x_train, y_train, y, is_SGD=False):
         """
         用mini-batch的GD训练并计算loss
         :param x_train: 特征数据，dim1是样本，dim2是特征
@@ -40,8 +40,9 @@ class SoftmaxRegression:
         self.sample_num, self.category_num = y_train.shape
         # self.theta = np.random.rand(self.category_num, self.feature_num)
         self.theta = np.zeros((self.category_num, self.feature_num))
-        batches = self.get_batches(x_train, y_train)
+        batches = self.get_batches(x_train, y_train, is_SGD)
         for i in range(self.max_iter):
+            # batches = self.get_batches(x_train, y_train, True)
             for batch in batches:
                 x_batch = batch[0]
                 y_batch = batch[1]
@@ -55,21 +56,27 @@ class SoftmaxRegression:
         pd.plot_loss(self.loss_list)
         pd.plot_result(x_train, y, self.theta)
 
-    def get_batches(self, x_train, y_train):
+    def get_batches(self, x_train, y_train, is_shuffle=False):
         """
         将数据划分成batch
         :param x_train: 特征数据，dim1是样本，dim2是特征
         :param y_train: 分类真实值，one_hot，dim1是样本，dim2是类别
+        :param is_shuffle: 是否要打乱特征数据，即是否使用SGD
         :return: batches，元组list，0是特征数据，1是分类真实值
         """
         batches = []
+        temp = np.hstack((x_train, y_train))
+        if is_shuffle:
+            np.random.shuffle(temp)
+        temp_x = temp[..., :x_train.shape[1]]
+        temp_y = temp[..., x_train.shape[1]:]
         for i in range(np.int(self.sample_num / self.batch_size)):
             x_batch = []
             y_batch = []
             for j in range(self.batch_size):
                 # print(i * self.batch_size + j)
-                x_batch.append(x_train[i * self.batch_size + j])
-                y_batch.append(y_train[i * self.batch_size + j])
+                x_batch.append(temp_x[i * self.batch_size + j])
+                y_batch.append(temp_y[i * self.batch_size + j])
             batch = (np.array(x_batch), np.array(y_batch))
             batches.append(batch)
         return batches

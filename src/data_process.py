@@ -175,14 +175,16 @@ class PlotData:
         dot_x, dot_y = self.__solve_data(data_3)
         plt.plot(dot_x, dot_y, 'oy')
         temp_x1 = np.linspace(0, 1)
-        for i in range(theta_mat.shape[0]):
-            if theta_mat.shape[0] == 3 and i == 1:
-                continue
-            if theta_mat.shape[0] == 2 and i == 1:
-                continue
-            temp_x2 = (theta_mat[i][2] - theta_mat[1][2] + temp_x1
-                       * (theta_mat[i][0] - theta_mat[1][0])) / (theta_mat[1][1] - theta_mat[i][1])
-            plt.plot(temp_x1, temp_x2)
+        # for i in range(theta_mat.shape[0]):
+        #     if theta_mat.shape[0] == 3 and i == 1:
+        #         continue
+        #     if theta_mat.shape[0] == 2 and i == 1:
+        #         continue
+        #     temp_x2 = (theta_mat[i][2] - theta_mat[1][2] + temp_x1
+        #                * (theta_mat[i][0] - theta_mat[1][0])) / (theta_mat[1][1] - theta_mat[i][1])
+        #     plt.plot(temp_x1, temp_x2)
+        temp_x2 = - (theta_mat[0][2] + temp_x1 * theta_mat[0][0]) / theta_mat[0][1]
+        plt.plot(temp_x1, temp_x2)
         plt.show()
 
 
