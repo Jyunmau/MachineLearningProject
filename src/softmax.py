@@ -4,8 +4,8 @@ import numpy as np
 
 # _*_ coding:utf-8 _*_
 
-#   @Version : 0.1.0
-#   @Time    : 2019/10/20 23:16
+#   @Version : 0.1.5
+#   @Time    : 2019/10/22 15:37
 #   @Author  : Jyunmau Chan
 #   @File    : softmax.py
 
@@ -29,7 +29,7 @@ class SoftmaxRegression:
         self.theta = None
         self.loss_list = []
 
-    def train(self, x_train, y_train):
+    def train(self, x_train, y_train, y):
         """
         用mini-batch的GD训练并计算loss
         :param x_train: 特征数据，dim1是样本，dim2是特征
@@ -38,7 +38,8 @@ class SoftmaxRegression:
         """
         self.sample_num, self.feature_num = x_train.shape
         self.sample_num, self.category_num = y_train.shape
-        self.theta = np.random.rand(self.category_num, self.feature_num)
+        # self.theta = np.random.rand(self.category_num, self.feature_num)
+        self.theta = np.zeros((self.category_num, self.feature_num))
         batches = self.get_batches(x_train, y_train)
         for i in range(self.max_iter):
             for batch in batches:
@@ -46,12 +47,13 @@ class SoftmaxRegression:
                 y_batch = batch[1]
                 h_j = self.softmax(x_batch)
                 d_theta = self.gradient(x_batch, y_batch, h_j)
-                self.theta = self.theta - self.learning_rate * d_theta
+                self.theta = self.theta - self.learning_rate * d_theta.T
             loss = self.loss(x_train, y_train)
             # print(loss)
             self.loss_list.append(loss)
         pd = dp.PlotData()
-        pd.plot_loss_1(self.loss_list)
+        pd.plot_loss(self.loss_list)
+        pd.plot_result(x_train, y, self.theta)
 
     def get_batches(self, x_train, y_train):
         """
@@ -93,6 +95,7 @@ class SoftmaxRegression:
         """
         p_c = self.softmax(x_batch)
         loss = - (1 / self.sample_num) * np.sum(y_batch * np.log(p_c))
+        # loss = - np.sum(y_batch * np.log(p_c))
         return loss
 
     def gradient(self, x_batch, y_batch, h_j):

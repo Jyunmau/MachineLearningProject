@@ -4,8 +4,8 @@ from matplotlib import pyplot as plt
 
 # _*_ coding:utf-8 _*_
 
-#   @Version : 0.1.0
-#   @Time    : 2019/10/20 16:37
+#   @Version : 0.1.5
+#   @Time    : 2019/10/22 16:13
 #   @Author  : Jyunmau Chan
 #   @File    : data_process.py
 
@@ -17,13 +17,13 @@ class SolveData:
         self.path_1 = "data/ex4Data/"
         self.path_2 = "data/Machine Learning Data/data/"
 
-    def __one_hot(self, y):
+    def __one_hot(self, y, category_num):
         """
         将类别编码转为one-hot编码
         :param y: 分类真实值，dim1是样本，值是类别
         :return: 分类真实值，one_hot，dim1是样本，dim2是类别
         """
-        category_num = 2
+        # category_num = 2
         sample_num = y.shape[0]
         one_hot = np.zeros((sample_num, category_num)).astype('int64')
         one_hot[np.arange(sample_num).astype('int64'), y.astype('int64').T] = 1
@@ -52,7 +52,6 @@ class SolveData:
         for i in range(data_array.shape[0]):
             data_array_new.append([dot_x1_new[i], dot_x2_new[i]])
         data_array_new = np.array(data_array_new)
-        # print(data_array_new)
         return data_array_new
 
     def solve_1(self, is_one_hot=True):
@@ -65,7 +64,23 @@ class SolveData:
         x = self.__normalize(x)
         y = np.loadtxt(self.path_1 + 'ex4y.txt')
         if is_one_hot:
-            y = self.__one_hot(y)
+            y = self.__one_hot(y, 2)
+        # 添加偏置项
+        sample_num, feature_num = x.shape
+        bias_x = np.ones((sample_num, 1))
+        x = np.hstack((x, bias_x))
+        return x, y
+
+    def solve_2(self, is_one_hot=True):
+        x = np.loadtxt(self.path_2 + 'iris_x.txt')
+        x = self.__normalize(x)
+        y = np.loadtxt(self.path_2 + 'iris_y.txt')
+        if is_one_hot:
+            y = self.__one_hot(y, 3)
+        # 添加偏置项
+        sample_num, feature_num = x.shape
+        bias_x = np.ones((sample_num, 1))
+        x = np.hstack((x, bias_x))
         return x, y
 
 
@@ -105,7 +120,32 @@ class PlotData:
         plt.plot(dot_x, dot_y, 'or')
         plt.show()
 
-    def plot_loss_1(self, losses):
+    def plot_data_2(self, data_array, category_array):
+        """
+        输出样本数据散点图
+        :param data_array: 特征数据，dim1是样本，dim2是特征
+        :param category_array: 分类真实值，dim1是样本，值是类别
+        :return:
+        """
+        data_1 = []
+        data_2 = []
+        data_3 = []
+        for i in range(len(category_array)):
+            if category_array[i] == 0:
+                data_1.append(data_array[i])
+            elif category_array[i] == 1:
+                data_2.append(data_array[i])
+            elif category_array[i] == 2:
+                data_3.append(data_array[i])
+        dot_x, dot_y = self.__solve_data(data_1)
+        plt.plot(dot_x, dot_y, 'ob')
+        dot_x, dot_y = self.__solve_data(data_2)
+        plt.plot(dot_x, dot_y, 'or')
+        dot_x, dot_y = self.__solve_data(data_3)
+        plt.plot(dot_x, dot_y, 'oy')
+        plt.show()
+
+    def plot_loss(self, losses):
         """
         打印loss值，横轴步骤，纵轴是loss
         :param losses: 损失的list，dim1是步骤
@@ -116,9 +156,38 @@ class PlotData:
         plt.plot(step_axis, losses, 'or')
         plt.show()
 
+    def plot_result(self, data_array, category_array, theta_mat):
+        data_array = data_array[..., :2]
+        data_1 = []
+        data_2 = []
+        data_3 = []
+        for i in range(len(category_array)):
+            if category_array[i] == 0:
+                data_1.append(data_array[i])
+            elif category_array[i] == 1:
+                data_2.append(data_array[i])
+            elif category_array[i] == 2:
+                data_3.append(data_array[i])
+        dot_x, dot_y = self.__solve_data(data_1)
+        plt.plot(dot_x, dot_y, 'ob')
+        dot_x, dot_y = self.__solve_data(data_2)
+        plt.plot(dot_x, dot_y, 'or')
+        dot_x, dot_y = self.__solve_data(data_3)
+        plt.plot(dot_x, dot_y, 'oy')
+        temp_x1 = np.linspace(0, 1)
+        for i in range(theta_mat.shape[0]):
+            if theta_mat.shape[0] == 3 and i == 1:
+                continue
+            if theta_mat.shape[0] == 2 and i == 1:
+                continue
+            temp_x2 = (theta_mat[i][2] - theta_mat[1][2] + temp_x1
+                       * (theta_mat[i][0] - theta_mat[1][0])) / (theta_mat[1][1] - theta_mat[i][1])
+            plt.plot(temp_x1, temp_x2)
+        plt.show()
+
 
 if __name__ == "__main__":
     sd = SolveData()
     PL = PlotData()
     x1, y1 = sd.solve_1(False)
-    PL.plot_data_1(x1, y1)
+    PL.plot_data_2(x1, y1)
