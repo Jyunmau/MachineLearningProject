@@ -52,8 +52,8 @@ class LogisticRegression:
             loss = self.loss(x_train, y_train)
             self.loss_list.append(loss)
         pd = dp.PlotData()
-        pd.plot_loss(self.loss_list)
-        pd.plot_result(x_train, y, self.theta)
+        # pd.plot_loss(self.loss_list)
+        pd.plot_result(x_train, y, self.theta, self.loss_list)
 
     def get_batches(self, x_train, y_train, is_shuffle=False):
         """

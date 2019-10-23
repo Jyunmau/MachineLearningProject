@@ -1,5 +1,6 @@
 import numpy as np
 from matplotlib import pyplot as plt
+import matplotlib.animation as animation
 
 
 # _*_ coding:utf-8 _*_
@@ -145,92 +146,76 @@ class PlotData:
         plt.plot(dot_x, dot_y, 'oy')
         plt.show()
 
-    def plot_loss(self, losses):
-        """
-        打印loss值，横轴步骤，纵轴是loss
-        :param losses: 损失的list，dim1是步骤
-        :return:
-        """
-        loss_num = len(losses)
-        step_axis = np.arange(0, loss_num)
-        fig, ax = plt.subplots()
-        # # ax.scatter(step_axis, losses, c='b', marker='.')
-        # # plt.show()
-        # plt.ion()
-        # # for i in range(loss_num):
-        # #     ax.scatter(step_axis[i], losses[i], c='b', marker='.')
-        # #     plt.pause(0.001)
-        # # plt.ioff()
-        # for i in range(loss_num):
-        #     temp_losses = losses[:i]
-        #     temp_step_axis = step_axis[:i]
-        #     plt.cla()
-        #     ax.scatter(temp_step_axis, temp_losses, c='b', marker='.')
-        #     plt.pause(0.001)
-        # plt.ioff()
-        # plt.show()
-        plt.plot(step_axis, losses, '.r')
-        plt.show()
+    def plot_result(self, data_array, category_array, theta_list, losses):
 
-    def plot_result(self, data_array, category_array, theta_list):
-        plt.ion()
+        plt.subplot(1, 2, 1)
+        fig_area = plt.figure(1)
+
+        data_color_label = {0: 'b', 1: 'r', 2: 'y'}
+        area_color_label = {0: '#FFB6C1', 1: '#90EE90', 2: '#87CEEB'}
+
+        # 区域划分
+        area_x = np.arange(0, 1, 0.01)
+        area_y = np.arange(0, 1, 0.01)
+        area = []
+        for i in range(100):
+            for j in range(100):
+                temp_x = []
+                temp_x.append(area_x[i])
+                temp_x.append(area_y[j])
+                temp_x.append(1)
+                temp_x = np.array(temp_x)
+                area.append(temp_x)
+        area = np.array(area)
+        x_1 = area[..., :1]
+        y_1 = area[..., 1]
+        area_color = []
         for theta_mat in theta_list:
-            plt.cla()
-            area_x = np.arange(0, 1, 0.02)
-            area_y = np.arange(0, 1, 0.02)
-            area = []
-            for i in range(50):
-                for j in range(50):
-                    temp_x = []
-                    temp_x.append(area_x[i])
-                    temp_x.append(area_y[j])
-                    temp_x.append(1)
-                    temp_x = np.array(temp_x)
-                    area.append(temp_x)
-            area = np.array(area)
             scores = np.dot(area, theta_mat.T)
             exp = np.exp(scores)
             sum_exp = np.sum(np.exp(scores), axis=1, keepdims=True)
             h_j = exp / sum_exp
+            area_color_1 = ['b'] * area.shape[0]
             for i in range(area.shape[0]):
-                if np.argmax(h_j[i]) == 0:
-                    plt.plot(area[i][0], area[i][1], color='lightpink', marker='o')
-                elif np.argmax(h_j[i]) == 1:
-                    plt.plot(area[i][0], area[i][1], color='lightgreen', marker='o')
-                elif np.argmax(h_j[i]) == 2:
-                    plt.plot(area[i][0], area[i][1], color='skyblue', marker='o')
-            data_array = data_array[..., :2]
-            data_1 = []
-            data_2 = []
-            data_3 = []
-            for i in range(len(category_array)):
-                if category_array[i] == 0:
-                    data_1.append(data_array[i])
-                elif category_array[i] == 1:
-                    data_2.append(data_array[i])
-                elif category_array[i] == 2:
-                    data_3.append(data_array[i])
-            dot_x, dot_y = self.__solve_data(data_1)
-            plt.plot(dot_x, dot_y, 'ob')
-            dot_x, dot_y = self.__solve_data(data_2)
-            plt.plot(dot_x, dot_y, 'or')
-            dot_x, dot_y = self.__solve_data(data_3)
-            plt.plot(dot_x, dot_y, 'oy')
-            plt.pause(0.001)
-            # temp_x1 = np.linspace(0, 1)
-            # if theta_mat.shape[0] == 1 and theta_mat.shape[1] == 3:
-            #     temp_x2 = - (theta_mat[0][2] + temp_x1 * theta_mat[0][0]) / theta_mat[0][1]
-            #     plt.plot(temp_x1, temp_x2)
-            # else:
-            #     for i in range(theta_mat.shape[0]):
-            #         if theta_mat.shape[0] == 3 and i == 1:
-            #             continue
-            #         if theta_mat.shape[0] == 2 and i == 1:
-            #             continue
-            #         temp_x2 = (theta_mat[i][2] - theta_mat[1][2] + temp_x1
-            #                    * (theta_mat[i][0] - theta_mat[1][0])) / (theta_mat[1][1] - theta_mat[i][1])
-            #         plt.plot(temp_x1, temp_x2)
-        plt.ioff()
+                area_color_1[i] = area_color_label[int(np.argmax(h_j[i]))]
+            area_color.append(area_color_1)
+
+        area_color = np.array(area_color)
+
+        def update_area(i_1, area_color_0, scat):
+            scat.set_color(area_color_0[i_1])
+            return scat
+
+        scat_area = plt.scatter(x_1, y_1, c='r', s=100)
+        ani_area = animation.FuncAnimation(fig_area, update_area, frames=theta_list.shape[0],
+                                           fargs=(area_color, scat_area))
+
+        # 数据点
+        data = data_array[..., :2]
+        data_color = ['b'] * len(category_array)
+        for i in range(len(category_array)):
+            data_color[i] = data_color_label[category_array[i]]
+        dot_x = data[..., :1]
+        dot_y = data[..., 1:]
+        plt.scatter(dot_x, dot_y, c=data_color)
+
+        # 损失值曲线
+        plt.subplot(1, 2, 2)
+        fig_loss = plt.figure(1)
+
+        def update_loss(i_1, x, y, scat):
+            temp_axis = [x[:i_1]]
+            temp_loss = [y[:i_1]]
+            scat.set_offsets(np.concatenate((np.array(temp_axis).T, np.array(temp_loss).T), axis=1))
+            return scat
+
+        loss_num = len(losses)
+        step_axis = np.arange(0, loss_num)
+
+        scat_loss = plt.scatter(step_axis, losses, c='r')
+        ani_loss = animation.FuncAnimation(fig_loss, update_loss, frames=loss_num,
+                                           fargs=(step_axis, losses, scat_loss))
+
         plt.show()
 
 

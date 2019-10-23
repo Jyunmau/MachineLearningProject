@@ -55,9 +55,9 @@ class SoftmaxRegression:
             self.loss_list.append(loss)
             theta_list.append(self.theta)
         pd = dp.PlotData()
-        pd.plot_loss(self.loss_list)
+        # pd.plot_loss(self.loss_list)
         theta_list = np.array(theta_list)
-        pd.plot_result(x_train, y, theta_list)
+        pd.plot_result(x_train, y, theta_list, self.loss_list)
 
     def get_batches(self, x_train, y_train, is_shuffle=False):
         """
