@@ -4,8 +4,8 @@ from matplotlib import pyplot as plt
 
 # _*_ coding:utf-8 _*_
 
-#   @Version : 0.1.5
-#   @Time    : 2019/10/22 16:13
+#   @Version : 0.2.0
+#   @Time    : 2019/10/22 23:24
 #   @Author  : Jyunmau Chan
 #   @File    : data_process.py
 
@@ -153,38 +153,84 @@ class PlotData:
         """
         loss_num = len(losses)
         step_axis = np.arange(0, loss_num)
-        plt.plot(step_axis, losses, 'or')
+        fig, ax = plt.subplots()
+        # # ax.scatter(step_axis, losses, c='b', marker='.')
+        # # plt.show()
+        # plt.ion()
+        # # for i in range(loss_num):
+        # #     ax.scatter(step_axis[i], losses[i], c='b', marker='.')
+        # #     plt.pause(0.001)
+        # # plt.ioff()
+        # for i in range(loss_num):
+        #     temp_losses = losses[:i]
+        #     temp_step_axis = step_axis[:i]
+        #     plt.cla()
+        #     ax.scatter(temp_step_axis, temp_losses, c='b', marker='.')
+        #     plt.pause(0.001)
+        # plt.ioff()
+        # plt.show()
+        plt.plot(step_axis, losses, '.r')
         plt.show()
 
-    def plot_result(self, data_array, category_array, theta_mat):
-        data_array = data_array[..., :2]
-        data_1 = []
-        data_2 = []
-        data_3 = []
-        for i in range(len(category_array)):
-            if category_array[i] == 0:
-                data_1.append(data_array[i])
-            elif category_array[i] == 1:
-                data_2.append(data_array[i])
-            elif category_array[i] == 2:
-                data_3.append(data_array[i])
-        dot_x, dot_y = self.__solve_data(data_1)
-        plt.plot(dot_x, dot_y, 'ob')
-        dot_x, dot_y = self.__solve_data(data_2)
-        plt.plot(dot_x, dot_y, 'or')
-        dot_x, dot_y = self.__solve_data(data_3)
-        plt.plot(dot_x, dot_y, 'oy')
-        temp_x1 = np.linspace(0, 1)
-        # for i in range(theta_mat.shape[0]):
-        #     if theta_mat.shape[0] == 3 and i == 1:
-        #         continue
-        #     if theta_mat.shape[0] == 2 and i == 1:
-        #         continue
-        #     temp_x2 = (theta_mat[i][2] - theta_mat[1][2] + temp_x1
-        #                * (theta_mat[i][0] - theta_mat[1][0])) / (theta_mat[1][1] - theta_mat[i][1])
-        #     plt.plot(temp_x1, temp_x2)
-        temp_x2 = - (theta_mat[0][2] + temp_x1 * theta_mat[0][0]) / theta_mat[0][1]
-        plt.plot(temp_x1, temp_x2)
+    def plot_result(self, data_array, category_array, theta_list):
+        plt.ion()
+        for theta_mat in theta_list:
+            plt.cla()
+            area_x = np.arange(0, 1, 0.02)
+            area_y = np.arange(0, 1, 0.02)
+            area = []
+            for i in range(50):
+                for j in range(50):
+                    temp_x = []
+                    temp_x.append(area_x[i])
+                    temp_x.append(area_y[j])
+                    temp_x.append(1)
+                    temp_x = np.array(temp_x)
+                    area.append(temp_x)
+            area = np.array(area)
+            scores = np.dot(area, theta_mat.T)
+            exp = np.exp(scores)
+            sum_exp = np.sum(np.exp(scores), axis=1, keepdims=True)
+            h_j = exp / sum_exp
+            for i in range(area.shape[0]):
+                if np.argmax(h_j[i]) == 0:
+                    plt.plot(area[i][0], area[i][1], color='lightpink', marker='o')
+                elif np.argmax(h_j[i]) == 1:
+                    plt.plot(area[i][0], area[i][1], color='lightgreen', marker='o')
+                elif np.argmax(h_j[i]) == 2:
+                    plt.plot(area[i][0], area[i][1], color='skyblue', marker='o')
+            data_array = data_array[..., :2]
+            data_1 = []
+            data_2 = []
+            data_3 = []
+            for i in range(len(category_array)):
+                if category_array[i] == 0:
+                    data_1.append(data_array[i])
+                elif category_array[i] == 1:
+                    data_2.append(data_array[i])
+                elif category_array[i] == 2:
+                    data_3.append(data_array[i])
+            dot_x, dot_y = self.__solve_data(data_1)
+            plt.plot(dot_x, dot_y, 'ob')
+            dot_x, dot_y = self.__solve_data(data_2)
+            plt.plot(dot_x, dot_y, 'or')
+            dot_x, dot_y = self.__solve_data(data_3)
+            plt.plot(dot_x, dot_y, 'oy')
+            plt.pause(0.001)
+            # temp_x1 = np.linspace(0, 1)
+            # if theta_mat.shape[0] == 1 and theta_mat.shape[1] == 3:
+            #     temp_x2 = - (theta_mat[0][2] + temp_x1 * theta_mat[0][0]) / theta_mat[0][1]
+            #     plt.plot(temp_x1, temp_x2)
+            # else:
+            #     for i in range(theta_mat.shape[0]):
+            #         if theta_mat.shape[0] == 3 and i == 1:
+            #             continue
+            #         if theta_mat.shape[0] == 2 and i == 1:
+            #             continue
+            #         temp_x2 = (theta_mat[i][2] - theta_mat[1][2] + temp_x1
+            #                    * (theta_mat[i][0] - theta_mat[1][0])) / (theta_mat[1][1] - theta_mat[i][1])
+            #         plt.plot(temp_x1, temp_x2)
+        plt.ioff()
         plt.show()
 
 

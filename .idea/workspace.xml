@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38009d8e-c704-4c4a-8b4b-8186b4b06873" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_process.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logistic.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logistic.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/softmax.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/softmax.py" afterDir="false" />
@@ -15,49 +16,51 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/MachineLearningProject$data_process.coverage" NAME="data_process Coverage Results" MODIFIED="1571747533428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/MachineLearningProject$starter.coverage" NAME="starter Coverage Results" MODIFIED="1571759996010" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/MachineLearningProject$starter.coverage" NAME="starter Coverage Results" MODIFIED="1571813715625" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1984396969">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.42" value="1" />
+          <entry key="project.open.time.5" value="2" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1506" />
+          <entry key="py" value="2836" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1506" />
+          <entry key="Python" value="2836" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="5" />
+          <entry key="py" value="6" />
           <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="5" />
+          <entry key="Python" value="6" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/softmax.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="26" lean-forward="true" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+            <state relative-caret-position="-8">
+              <caret line="63" column="19" selection-start-line="63" selection-start-column="19" selection-end-line="63" selection-end-column="19" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -65,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/data_process.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="186" column="34" lean-forward="true" selection-start-line="186" selection-start-column="34" selection-end-line="186" selection-end-column="34" />
+            <state relative-caret-position="331">
+              <caret line="191" column="32" lean-forward="true" selection-start-line="191" selection-start-column="32" selection-end-line="191" selection-end-column="32" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -80,8 +83,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/logistic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-395">
-              <caret line="71" selection-start-line="71" selection-end-line="71" />
+            <state relative-caret-position="-8">
+              <caret line="33" column="31" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -92,8 +95,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/starter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+            <state relative-caret-position="-8">
+              <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -103,16 +106,21 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>print</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/softmax.py" />
-        <option value="$PROJECT_DIR$/src/logistic.py" />
-        <option value="$PROJECT_DIR$/src/data_process.py" />
         <option value="$PROJECT_DIR$/src/starter.py" />
+        <option value="$PROJECT_DIR$/src/logistic.py" />
+        <option value="$PROJECT_DIR$/src/softmax.py" />
+        <option value="$PROJECT_DIR$/src/data_process.py" />
       </list>
     </option>
   </component>
@@ -128,16 +136,17 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2349" />
-    <option name="y" value="25" />
-    <option name="width" value="1550" />
-    <option name="height" value="838" />
+    <option name="x" value="2322" />
+    <option name="y" value="22" />
+    <option name="width" value="1152" />
+    <option name="height" value="612" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -150,32 +159,10 @@
               <item name="MachineLearningProject" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="MachineLearningProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MachineLearningProject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MachineLearningProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MachineLearningProject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="Machine Learning Data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MachineLearningProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MachineLearningProject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="Machine Learning Data" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -183,6 +170,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -269,12 +257,12 @@
     <frame x="1912" y="26" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15647922" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15158924" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.19304153" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.13019079" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -288,7 +276,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.42787287" />
+      <window_info anchor="right" auto_hide="true" x="636" y="126" width="624" height="569" id="SciView" order="3" show_stripe_button="false" type="FLOATING" weight="0.41823056" />
       <window_info anchor="right" id="Database" order="4" />
     </layout>
     <layout-to-restore>
@@ -337,20 +325,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logistic.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/numpy/core/numeric.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-395">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
+        <state relative-caret-position="177">
+          <caret line="222" selection-start-line="222" selection-end-line="222" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/starter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/starter.py">
+    <entry file="file://$PROJECT_DIR$/src/logistic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        <state relative-caret-position="-8">
+          <caret line="33" column="31" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/softmax.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="63" column="19" selection-start-line="63" selection-start-column="19" selection-end-line="63" selection-end-column="19" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
@@ -359,20 +364,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/data_process.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="186" column="34" lean-forward="true" selection-start-line="186" selection-start-column="34" selection-end-line="186" selection-end-column="34" />
+        <state relative-caret-position="331">
+          <caret line="191" column="32" lean-forward="true" selection-start-line="191" selection-start-column="32" selection-end-line="191" selection-end-column="32" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/softmax.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="26" lean-forward="true" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>

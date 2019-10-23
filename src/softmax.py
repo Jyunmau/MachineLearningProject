@@ -4,7 +4,7 @@ import numpy as np
 
 # _*_ coding:utf-8 _*_
 
-#   @Version : 0.1.5
+#   @Version : 0.2.0
 #   @Time    : 2019/10/22 22:37
 #   @Author  : Jyunmau Chan
 #   @File    : softmax.py
@@ -36,6 +36,7 @@ class SoftmaxRegression:
         :param y_train: 分类真实值，one_hot，dim1是样本，dim2是类别
         :return:
         """
+        theta_list = []
         self.sample_num, self.feature_num = x_train.shape
         self.sample_num, self.category_num = y_train.shape
         # self.theta = np.random.rand(self.category_num, self.feature_num)
@@ -52,9 +53,11 @@ class SoftmaxRegression:
             loss = self.loss(x_train, y_train)
             # print(loss)
             self.loss_list.append(loss)
+            theta_list.append(self.theta)
         pd = dp.PlotData()
         pd.plot_loss(self.loss_list)
-        pd.plot_result(x_train, y, self.theta)
+        theta_list = np.array(theta_list)
+        pd.plot_result(x_train, y, theta_list)
 
     def get_batches(self, x_train, y_train, is_shuffle=False):
         """
@@ -114,5 +117,4 @@ class SoftmaxRegression:
         :return: 梯度值，dim1是类别，dim2是特征
         """
         grad = (1 / self.sample_num) * np.dot(x_batch.T, (h_j - y_batch))
-        # grad = np.dot(x_batch.T, (h_j - y_batch))
         return grad
