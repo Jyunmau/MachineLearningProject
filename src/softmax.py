@@ -4,8 +4,8 @@ import numpy as np
 
 # _*_ coding:utf-8 _*_
 
-#   @Version : 0.2.0
-#   @Time    : 2019/10/22 22:37
+#   @Version : 1.0.0
+#   @Time    : 2019/10/24 16:03
 #   @Author  : Jyunmau Chan
 #   @File    : softmax.py
 
@@ -31,7 +31,7 @@ class SoftmaxRegression:
 
     def train(self, x_train, y_train, y, is_SGD=False):
         """
-        用mini-batch的GD训练并计算loss
+        用mini-batch训练并计算loss
         :param x_train: 特征数据，dim1是样本，dim2是特征
         :param y_train: 分类真实值，one_hot，dim1是样本，dim2是类别
         :return:
@@ -39,27 +39,24 @@ class SoftmaxRegression:
         theta_list = []
         self.sample_num, self.feature_num = x_train.shape
         self.sample_num, self.category_num = y_train.shape
-        # self.theta = np.random.rand(self.category_num, self.feature_num)
         self.theta = np.zeros((self.category_num, self.feature_num))
-        batches = self.get_batches(x_train, y_train, is_SGD)
+        batches = self.__get_batches(x_train, y_train, is_SGD)
         for i in range(self.max_iter):
-            # batches = self.get_batches(x_train, y_train, True)
             for batch in batches:
                 x_batch = batch[0]
                 y_batch = batch[1]
-                h_j = self.softmax(x_batch)
-                d_theta = self.gradient(x_batch, y_batch, h_j)
+                h_j = self.__softmax(x_batch)
+                d_theta = self.__gradient(x_batch, y_batch, h_j)
                 self.theta = self.theta - self.learning_rate * d_theta.T
-            loss = self.loss(x_train, y_train)
-            # print(loss)
+            loss = self.__loss(x_train, y_train)
+            # 每次迭代保存参数值和loss值，方便作图
             self.loss_list.append(loss)
             theta_list.append(self.theta)
         pd = dp.PlotData()
-        # pd.plot_loss(self.loss_list)
         theta_list = np.array(theta_list)
         pd.plot_result(x_train, y, theta_list, self.loss_list)
 
-    def get_batches(self, x_train, y_train, is_shuffle=False):
+    def __get_batches(self, x_train, y_train, is_shuffle=False):
         """
         将数据划分成batch
         :param x_train: 特征数据，dim1是样本，dim2是特征
@@ -84,7 +81,7 @@ class SoftmaxRegression:
             batches.append(batch)
         return batches
 
-    def softmax(self, x):
+    def __softmax(self, x):
         """
         softmax模型计算分类概率h_j(x)
         :param x: 特征数据，dim1是样本，dim2是特征
@@ -96,19 +93,19 @@ class SoftmaxRegression:
         h_j = exp / sum_exp
         return h_j
 
-    def loss(self, x_batch, y_batch):
+    def __loss(self, x_batch, y_batch):
         """
         计算交叉熵损失
         :param x_batch: 特征数据，dim1是样本，dim2是特征
         :param y_batch: 分类真实值，one_hot，dim1是样本，dim2是类别
         :return:
         """
-        p_c = self.softmax(x_batch)
+        p_c = self.__softmax(x_batch)
         loss = - (1 / self.sample_num) * np.sum(y_batch * np.log(p_c))
         # loss = - np.sum(y_batch * np.log(p_c))
         return loss
 
-    def gradient(self, x_batch, y_batch, h_j):
+    def __gradient(self, x_batch, y_batch, h_j):
         """
         误差反向传播法（解析法）计算梯度
         :param x_batch: 特征数据，dim1是样本，dim2是特征

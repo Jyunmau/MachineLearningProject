@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38009d8e-c704-4c4a-8b4b-8186b4b06873" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_process.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logistic.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logistic.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/softmax.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/softmax.py" afterDir="false" />
@@ -16,40 +17,40 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/MachineLearningProject$data_process.coverage" NAME="data_process Coverage Results" MODIFIED="1571747533428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/MachineLearningProject$test_animate.coverage" NAME="test_animate Coverage Results" MODIFIED="1571833943525" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/MachineLearningProject$starter.coverage" NAME="starter Coverage Results" MODIFIED="1571843236233" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/MachineLearningProject$starter.coverage" NAME="starter Coverage Results" MODIFIED="1571907113764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1984396969">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.42" value="1" />
           <entry key="project.open.time.5" value="2" />
-          <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.open.time.7" value="2" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="4179" />
+          <entry key="py" value="5442" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="4179" />
+          <entry key="Python" value="5442" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="7" />
+          <entry key="py" value="9" />
           <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="7" />
+          <entry key="Python" value="9" />
         </counts>
       </usages-collector>
     </session>
@@ -59,10 +60,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/softmax.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="59" column="61" selection-start-line="59" selection-start-column="61" selection-end-line="59" selection-end-column="61" />
+            <state relative-caret-position="1055">
+              <caret line="99" column="32" lean-forward="true" selection-start-line="99" selection-start-column="32" selection-end-line="99" selection-end-column="32" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
+                <marker date="1571905876213" expanded="true" signature="1820:1826" ph="..." />
               </folding>
             </state>
           </provider>
@@ -71,11 +73,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data_process.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="158" column="17" selection-start-line="158" selection-start-column="17" selection-end-line="158" selection-end-column="17" />
+            <state relative-caret-position="-884">
+              <caret line="166" column="91" selection-start-line="166" selection-start-column="91" selection-end-line="166" selection-end-column="91" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <marker date="1571843169451" expanded="true" signature="4606:6998" ph="..." />
+                <marker date="1571907113747" expanded="true" signature="5738:8122" ph="..." />
               </folding>
             </state>
           </provider>
@@ -84,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/logistic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="55" column="61" selection-start-line="55" selection-start-column="61" selection-end-line="55" selection-end-column="61" />
+            <state relative-caret-position="1181">
+              <caret line="96" column="11" lean-forward="true" selection-start-line="96" selection-start-column="11" selection-end-line="96" selection-end-column="11" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -96,10 +98,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/starter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="33" column="37" selection-start-line="28" selection-start-column="4" selection-end-line="33" selection-end-column="37" />
+            <state relative-caret-position="319">
+              <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
+                <marker date="1571905013453" expanded="true" signature="145:1013" ph="..." />
               </folding>
             </state>
           </provider>
@@ -118,6 +121,7 @@
     <findStrings>
       <find>blit</find>
       <find>print</find>
+      <find>app</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -127,10 +131,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/test_animate.py" />
+        <option value="$PROJECT_DIR$/src/starter.py" />
         <option value="$PROJECT_DIR$/src/softmax.py" />
         <option value="$PROJECT_DIR$/src/logistic.py" />
         <option value="$PROJECT_DIR$/src/data_process.py" />
-        <option value="$PROJECT_DIR$/src/starter.py" />
       </list>
     </option>
   </component>
@@ -289,15 +293,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="26" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15158924" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15342298" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30527496" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.30527496" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39955106" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -366,41 +369,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/softmax.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="59" column="61" selection-start-line="59" selection-start-column="61" selection-end-line="59" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_animate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="522">
           <caret line="29" column="22" lean-forward="true" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/matplotlib/cbook/deprecation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="1704" selection-start-line="1704" selection-end-line="1704" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/softmax.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1055">
+          <caret line="99" column="32" lean-forward="true" selection-start-line="99" selection-start-column="32" selection-end-line="99" selection-end-column="32" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#25#0" expanded="true" />
+            <marker date="1571905876213" expanded="true" signature="1820:1826" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/data_process.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="158" column="17" selection-start-line="158" selection-start-column="17" selection-end-line="158" selection-end-column="17" />
+        <state relative-caret-position="-884">
+          <caret line="166" column="91" selection-start-line="166" selection-start-column="91" selection-end-line="166" selection-end-column="91" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <marker date="1571843169451" expanded="true" signature="4606:6998" ph="..." />
+            <marker date="1571907113747" expanded="true" signature="5738:8122" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logistic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="55" column="61" selection-start-line="55" selection-start-column="61" selection-end-line="55" selection-end-column="61" />
+        <state relative-caret-position="1181">
+          <caret line="96" column="11" lean-forward="true" selection-start-line="96" selection-start-column="11" selection-end-line="96" selection-end-column="11" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
@@ -409,10 +424,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/starter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="33" column="37" selection-start-line="28" selection-start-column="4" selection-end-line="33" selection-end-column="37" />
+        <state relative-caret-position="319">
+          <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
+            <marker date="1571905013453" expanded="true" signature="145:1013" ph="..." />
           </folding>
         </state>
       </provider>

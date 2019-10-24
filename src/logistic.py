@@ -4,8 +4,8 @@ import numpy as np
 
 # _*_ coding:utf-8 _*_
 
-#   @Version : 0.2.0
-#   @Time    : 2019/10/22 23:58
+#   @Version : 1.0.0
+#   @Time    : 2019/10/24 16:04
 #   @Author  : Jyunmau Chan
 #   @File    : logistic.py
 
@@ -36,26 +36,29 @@ class LogisticRegression:
         :param y_train: 分类真实值，one_hot，dim1是样本，dim2是类别
         :return:
         """
+        theta_list = []
         self.sample_num, self.feature_num = x_train.shape
         # self.sample_num, self.category_num = y_train.shape
         self.category_num = 1
         # self.theta = np.random.rand(self.category_num, self.feature_num)
         self.theta = np.zeros((self.category_num, self.feature_num))
-        batches = self.get_batches(x_train, y_train, is_SGD)
+        batches = self.__get_batches(x_train, y_train, is_SGD)
         for i in range(self.max_iter):
             for batch in batches:
                 x_batch = batch[0]
                 y_batch = batch[1]
-                h_j = self.logistic(x_batch)
-                d_theta = self.gradient(x_batch, y_batch, h_j)
+                h_j = self.__logistic(x_batch)
+                d_theta = self.__gradient(x_batch, y_batch, h_j)
                 self.theta = self.theta - self.learning_rate * d_theta.T
-            loss = self.loss(x_train, y_train)
+                # theta_list.append(self.theta)
+            loss = self.__loss(x_train, y_train)
             self.loss_list.append(loss)
+            theta_list.append(self.theta)
         pd = dp.PlotData()
-        # pd.plot_loss(self.loss_list)
-        pd.plot_result(x_train, y, self.theta, self.loss_list)
+        theta_list = np.array(theta_list)
+        pd.plot_result(x_train, y, theta_list, self.loss_list)
 
-    def get_batches(self, x_train, y_train, is_shuffle=False):
+    def __get_batches(self, x_train, y_train, is_shuffle=False):
         """
         将数据划分成batch
         :param x_train: 特征数据，dim1是样本，dim2是特征
@@ -79,7 +82,7 @@ class LogisticRegression:
             batches.append(batch)
         return batches
 
-    def logistic(self, x):
+    def __logistic(self, x):
         """
         logistic模型计算分类概率h_j(x)
         :param x: 特征数据，dim1是样本，dim2是特征
@@ -90,18 +93,18 @@ class LogisticRegression:
         h_j = 1 / (1 + exp)
         return h_j
 
-    def loss(self, x_batch, y_batch):
+    def __loss(self, x_batch, y_batch):
         """
         计算交叉熵损失
         :param x_batch: 特征数据，dim1是样本，dim2是特征
         :param y_batch: 分类真实值，one_hot，dim1是样本，dim2是类别
         :return:
         """
-        p_c = self.logistic(x_batch)
+        p_c = self.__logistic(x_batch)
         loss = - (1 / self.sample_num) * np.sum(y_batch * np.log(p_c))
         return loss
 
-    def gradient(self, x_batch, y_batch, h_j):
+    def __gradient(self, x_batch, y_batch, h_j):
         """
         误差反向传播法（解析法）计算梯度
         :param x_batch: 特征数据，dim1是样本，dim2是特征
